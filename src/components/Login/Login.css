@@ -1,0 +1,205 @@
+.loginSection {
+    position: relative;
+    height: 100vh;
+    /* background-color: #f8dd30;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* /* padding: 20px; */
+}
+
+.loginSection .container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background: #fff;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+   
+}
+  
+.loginSection .container .user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+  
+  .loginSection .container .user .imgBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    transition: 0.5s;
+  }
+  
+  .loginSection .container .user .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .loginSection .container .user .formBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    transition: 0.5s;
+  }
+  
+  .loginSection .container .user .formBx form h2 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  .loginSection .container .user .formBx form{
+    width: 100% !important;
+  }
+  
+  .loginSection .container .user .formBx form .input-group .form-control {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    background: #f5f5f5;
+    color: #333;
+    border: none;
+    outline: none;
+    padding-left: 2.0rem !important;
+    padding-right: 2.0rem !important;
+    box-shadow: none;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
+  
+  .loginSection .container .user .formBx form .input-group .form-control:focus {
+    box-shadow:3px 3px 15px #de8cf3; 
+  }
+  .loginSection .container .user .formBx form input[type='submit'] {
+
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    height: 40px;
+  }
+  
+  .loginSection .container .user .formBx form .signup {
+    position: relative;
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  
+  .loginSection .container .user .formBx form .signup span {
+    font-weight: 600;
+    text-decoration: none;
+    color: #c715fd;
+    cursor: pointer;
+  }
+  
+  .loginSection .container .signupBx {
+    pointer-events: none;
+  }
+  
+  .loginSection .container.active .signupBx {
+    pointer-events: initial;
+  }
+  
+  .loginSection .container .signupBx .formBx {
+    left: 100%;
+  }
+  
+  .loginSection .container.active .signupBx .formBx {
+    left: 0;
+  }
+  
+  .loginSection .container .signupBx .imgBx {
+    left: -100%;
+  }
+  
+  .loginSection .container.active .signupBx .imgBx {
+    left: 0%;
+  }
+  
+  .loginSection .container .signinBx .formBx {
+    left: 0%;
+  }
+  
+  .loginSection .container.active .signinBx .formBx {
+    left: 100%;
+  }
+  
+  .loginSection .container .signinBx .imgBx {
+    left: 0%;
+  }
+  
+  .loginSection .container.active .signinBx .imgBx {
+    left: -100%;
+  }
+  /* ------------------------------------------------ */
+.input-group.with-icon>p {
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  color:#555 ;
+  width: 10px !important;
+}
+
+.input-group.with-icon.icon-left>p {
+left: .7rem;
+}
+.see-pass .see-pass-icon {
+  position: absolute;
+  left: 335px !important;
+  top: 205px;
+  z-index: 999;
+  cursor: pointer !important;
+  color:#555 ;
+  }
+
+.input-group input:focus + p {
+  color: #c715fd;
+}
+  /* -------------------------------------------------- */
+  @media (max-width: 991px) {
+    .loginSection .container {
+      max-width: 400px;
+    }
+  
+    .loginSection .container .imgBx {
+      display: none;
+    }
+  
+    .loginSection .container .user .formBx {
+      width: 100%;
+    }
+  }
+  

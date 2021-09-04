@@ -1,0 +1,31 @@
+.add-service .upload-btn {
+  border: 2px solid #e7b5f7;
+  color: #c715fd;
+  max-width: 16rem;
+}
+
+.add-service .upload-btn:hover,
+.add-service .upload-btn:active {
+  border: 2px solid #c009f8 !important;
+  color: white;
+  background: #c715fd !important;
+  border-radius: 0.25rem;
+}
+
+.add-service .submit-btn {
+    width: 9rem;
+    padding: .68rem 0;
+}
+.deleteImageBtn{
+  position: absolute;
+  top: 20px;
+  left: 90px;
+  background-color: #c009f8;
+  padding: 0 6px !important;
+  color: white;
+  border-radius: 50%;
+}
+.deleteImageBtn:hover{
+  background-color: #df7dfd;
+  color: white;
+}
