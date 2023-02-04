@@ -16,7 +16,7 @@ const Testimonials = () => {
     const [Reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        axios.get('https://immense-stream-47683.herokuapp.com/reviews')
+        axios.get('https://trav-geek-mern-server.vercel.app/reviews')
             .then(res => {
                 setReviews(res.data);
                 setLoading(false);

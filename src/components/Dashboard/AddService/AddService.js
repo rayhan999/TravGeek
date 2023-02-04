@@ -66,7 +66,7 @@ const AddService = ({ editService, restrictPermission, setEditService }) => {
                 setEditService({});
                 return toast.error("You haven't changed anything!");
             }
-            axios.patch(`https://immense-stream-47683.herokuapp.com/update/${editService._id}`, serviceInfo)
+            axios.patch(`https://trav-geek-mern-server.vercel.app/update/${editService._id}`, serviceInfo)
                 .then(res => {
                     toast.dismiss(loading);
                     if (res.data) {
@@ -84,7 +84,7 @@ const AddService = ({ editService, restrictPermission, setEditService }) => {
             return;
         }
 
-        axios.post('https://immense-stream-47683.herokuapp.com/addService', serviceInfo)
+        axios.post('https://trav-geek-mern-server.vercel.app/addService', serviceInfo)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {

@@ -21,7 +21,7 @@ const Book = () => {
     const serviceInfo = services.find(service => service.title === selectedOption.value);
 
     useEffect(() => {
-        axios.get('https://immense-stream-47683.herokuapp.com/services')
+        axios.get('https://trav-geek-mern-server.vercel.app/services')
             .then(res => setServices(res.data))
             .catch(error => toast.error(error.message))
     }, [])

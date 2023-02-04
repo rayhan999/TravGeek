@@ -23,7 +23,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    axios.get(`https://immense-stream-47683.herokuapp.com/isAdmin?email=${loggedInUser?.email}`)
+    axios.get(`https://trav-geek-mern-server.vercel.app/isAdmin?email=${loggedInUser?.email}`)
       .then(res => {
         setIsAdmin(res.data);
         setAdminLoading(false);

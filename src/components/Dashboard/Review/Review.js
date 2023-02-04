@@ -20,7 +20,7 @@ const Review = ({ review: { name, description, address, img, _id }, setEdit }) =
         }).then(wantDelete => {
             if (wantDelete) {
                 const loading = toast.loading('Deleting...Please wait!');
-                axios.delete(`https://immense-stream-47683.herokuapp.com/deleteReview/${id}`)
+                axios.delete(`https://trav-geek-mern-server.vercel.app/deleteReview/${id}`)
                     .then(res => {
                         toast.dismiss(loading);
                         if (res.data) {

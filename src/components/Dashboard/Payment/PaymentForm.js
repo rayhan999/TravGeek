@@ -68,7 +68,7 @@ const PaymentForm = ({ serviceInfo }) => {
             orderTime: new Date().toLocaleString()
         };
 
-        axios.post('https://immense-stream-47683.herokuapp.com/addOrder', orderDetails)
+        axios.post('https://trav-geek-mern-server.vercel.app/addOrder', orderDetails)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {
