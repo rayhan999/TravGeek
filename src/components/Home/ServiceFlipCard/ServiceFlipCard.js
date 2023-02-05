@@ -4,7 +4,7 @@ import { UserContext } from '../../../App';
 import './ServiceFlipCard.css';
 
 const ServiceFlipCard = ({ service }) => {
-    const { title, image, description, cost, days, location } = service;
+    const { title, image, description, cost, location } = service;
     const { setSelectedService, isAdmin } = useContext(UserContext);
     return (
         <div className="col-md-4 mb-5" style={{ background: 'none' }}>

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Row, Spinner, Button } from 'react-bootstrap';
+import { Button, Row, Spinner } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import ServiceDetail from '../ServiceDetail/ServiceDetail';
 import ServiceFlipCard from '../ServiceFlipCard/ServiceFlipCard';
 import './Services.css';
 

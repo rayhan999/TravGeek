@@ -8,7 +8,6 @@ import { UserContext } from '../../../App';
 import './MakeAdmin.css';
 
 const MakeAdmin = () => {
-    const { loggedInUser: { email } } = useContext(UserContext);
     const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {

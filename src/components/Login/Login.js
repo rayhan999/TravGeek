@@ -1,22 +1,18 @@
-import swal from '@sweetalert/with-react';
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faEye, faEyeSlash, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
-import { Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useHistory, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGoogle, faFacebook, faUserCircle } from "@fortawesome/free-brands-svg-icons";
-import { faUser, faEye, faKey, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from '../../App';
+import './Login.css';
 import {
     createUserWithEmailAndPassword,
-    handleGoogleSignIn,
-    handleSignOut,
-    initializeLoginFramework,
+    handleGoogleSignIn, initializeLoginFramework,
     setJWTToken,
     signInWithEmailAndPassword
 } from './LoginManager';
-import './Login.css';
 // import { Cookie } from 'express-session';
 
 const Login = () => {
@@ -24,7 +20,6 @@ const Login = () => {
     const [showModal, setShowModal] = useState(false);
     const [newUser, setNewUser] = useState(false);
     const [signup, setSignup] = useState(false);
-    const [loginFailed, setLoginFailed] = useState(false);
     const [seePassword, setSeePassword] = useState(false);
     const { register: registerSignIn, handleSubmit: handleSignIn } = useForm();
     const { register: registerSignUp, handleSubmit: handleSignUp } = useForm();

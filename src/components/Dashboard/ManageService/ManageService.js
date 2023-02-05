@@ -1,16 +1,14 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
-import { UserContext } from '../../../App';
 import AddService from '../AddService/AddService';
 import TableLoader from '../TableLoader/TableLoader';
 
 const ManageService = () => {
-    const { loggedInUser: { email } } = useContext(UserContext);
     const [services, setServices] = useState([]);
     const [editService, setEditService] = useState({});
     const [loading, setLoading] = useState(true);
