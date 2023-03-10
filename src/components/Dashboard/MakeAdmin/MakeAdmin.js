@@ -15,7 +15,7 @@ const MakeAdmin = () => {
         //     return swal("Permission restriction!", "As a test-admin, you don't have this permission.", "info");;
         // }
         const loading = toast.loading('Adding...Please wait!');
-        axios.post('https://trav-geek-mern-server.vercel.app/addAdmin', data)
+        axios.post('https://trav-geek-server.vercel.app/addAdmin', data)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {

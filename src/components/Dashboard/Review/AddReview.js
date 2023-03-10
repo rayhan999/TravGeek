@@ -24,7 +24,7 @@ const AddReview = ({ review, setReview, edit, setEdit }) => {
         data.rating = rating;
 
         if (edit) {
-            axios.patch(`https://trav-geek-mern-server.vercel.app/updateReview/${review._id}`, data)
+            axios.patch(`https://trav-geek-server.vercel.app/updateReview/${review._id}`, data)
                 .then(res => {
                     toast.dismiss(loading);
                     if (
@@ -49,7 +49,7 @@ const AddReview = ({ review, setReview, edit, setEdit }) => {
             return;
         }
 
-        axios.post('https://trav-geek-mern-server.vercel.app/addReview', data)
+        axios.post('https://trav-geek-server.vercel.app/addReview', data)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {

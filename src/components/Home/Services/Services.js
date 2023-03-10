@@ -11,7 +11,7 @@ const Services = () => {
     const [showMore, setShowMore] = useState(false);
 
     useEffect(() => {
-        axios.get('https://trav-geek-mern-server.vercel.app/services')
+        axios.get('https://trav-geek-server.vercel.app/services')
             .then(res => {
                 setServices(res.data);
                 setLoading(false);

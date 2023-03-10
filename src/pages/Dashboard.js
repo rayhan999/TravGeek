@@ -37,7 +37,7 @@ const Dashboard = ({ adminLoading }) => {
     }
 
     useEffect(() => {
-        axios.get(`https://trav-geek-mern-server.vercel.app/reviews?email=${email}`)
+        axios.get(`https://trav-geek-server.vercel.app/reviews?email=${email}`)
             .then(res => {
                 setReview(res.data);
                 setLoadingReview(false);
