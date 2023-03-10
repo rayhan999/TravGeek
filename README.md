@@ -10,4 +10,4 @@ Back-end of a full-stack project where Users can buy book tours by completing pa
 
 - #### Admins can add,delete,update their providing services.
 
-## Live site link: [TravGeek](https://travgeek-pro.web.app/)
+## Live site link: [TravGeek](https://trav-geek.vercel.app/)
