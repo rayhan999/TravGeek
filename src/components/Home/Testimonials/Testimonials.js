@@ -62,7 +62,7 @@ const Testimonials = () => {
                                 spaceBetween={10}
                             >
                                 {
-                                    Reviews.map(testimonial => {
+                                    Reviews?.map(testimonial => {
                                         return (
                                             <SwiperSlide key={testimonial._id} className="mb-3">
                                                 <Testimonial testimonial={testimonial} />
