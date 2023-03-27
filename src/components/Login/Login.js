@@ -24,10 +24,9 @@ const Login = () => {
   const { from } = location.state || { from: { pathname: "/" } };
 
   useEffect(() => pathname === "/login" && setShowModal(true), [pathname]);
-   useEffect(() => {
-     alert('Click SUBMIT to login as admin. Otherwise signup with google to login as user.')
-   }, [])
-   
+  useEffect(() => {
+    alert("Click SUBMIT to login as admin. Otherwise signup with google to login as user.");
+  }, []);
 
   const googleSignIn = () => {
     initializeLoginFramework();
@@ -97,7 +96,6 @@ const Login = () => {
         <div className="user signinBx">
           <div className="imgBx">
             <img className="img-fluid" src="https://image.freepik.com/free-vector/detailed-travel-logo_23-2148616611.jpg" alt="" />
-           
           </div>
           <div className="formBx">
             <form onSubmit={handleSignIn(onSubmit)}>
@@ -140,7 +138,6 @@ const Login = () => {
             <button className="btn btn-danger rounded-5 btn-block" onClick={googleSignIn}>
               <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon> &nbsp; Sign In with Google
             </button>
-          
           </div>
         </div>
         <div className="user signupBx">
