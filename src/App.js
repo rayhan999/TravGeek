@@ -28,7 +28,7 @@ function App() {
         setIsAdmin(res.data);
         setAdminLoading(false);
       })
-      .catch(error => toast.error(error.message))
+      .catch(error => toast.error('CORS Error'))
   }, [loggedInUser?.email]);
 
   return (
