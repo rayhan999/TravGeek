@@ -12,7 +12,7 @@ const BookingList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://trav-geek-server.vercel.app/orders?email=${email}`)
+        axios.get(`https://trav-geek-mern-server.vercel.app/orders?email=${email}`)
             .then(res => {
                 setOrders(res.data);
                 setLoading(false);

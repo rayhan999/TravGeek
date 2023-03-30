@@ -14,7 +14,7 @@ const ManageService = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://trav-geek-server.vercel.app/services')
+        axios.get('https://trav-geek-mern-server.vercel.app/services')
             .then(res => {
                 setServices(res.data);
                 setLoading(false);
@@ -39,7 +39,7 @@ const ManageService = () => {
             if (wantDelete) {
                 const loading = toast.loading('Deleting...Please wait!');
                 const removedServices = services.filter(item => item._id !== id);
-                axios.delete(`https://trav-geek-server.vercel.app/delete/${id}`)
+                axios.delete(`https://trav-geek-mern-server.vercel.app/delete/${id}`)
                     .then(res => {
                         toast.dismiss(loading);
                         if (res.data) {

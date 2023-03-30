@@ -22,13 +22,30 @@ function App() {
   const [adminLoading, setAdminLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
+  const callAPI = async () =>{
+    const response = await axios.get(`https://trav-geek-mern-server.vercel.app/isAdmin?email=${loggedInUser?.email}`);
+    const data = response.data;
+    setIsAdmin(data);
+    setAdminLoading(false);
+    console.log(data); // Do something with the data
+  }
+   function fetchData() {
+    try {
+      callAPI()
+    } catch (error) {
+      console.error(error);
+      callAPI()
+    }
+  }
+
   useEffect(() => {
-    axios.get(`https://trav-geek-server.vercel.app/isAdmin?email=${loggedInUser?.email}`)
-      .then(res => {
-        setIsAdmin(res.data);
-        setAdminLoading(false);
-      })
-      .catch(error => toast.error('CORS Error'))
+    // axios.get(`https://trav-geek-mern-server.vercel.app/isAdmin?emaill=${loggedInUser?.email}`)
+    //   .then(res => {
+    //     setIsAdmin(res.data);
+    //     setAdminLoading(false);
+    //   })
+    //   .catch(error => toast.error('CORS Error'))
+      fetchData();
   }, [loggedInUser?.email]);
 
   return (

@@ -1,81 +1,98 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { CardDeck, Spinner } from 'react-bootstrap';
-import toast from 'react-hot-toast';
-import Fade from 'react-reveal/Fade';
-import SwiperCore, { Autoplay, Pagination } from 'swiper';
-import 'swiper/components/pagination/pagination.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.scss';
-import Testimonial from '../Testimonial/Testimonial';
-import './Testimonials.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { CardDeck, Spinner } from "react-bootstrap";
+import toast from "react-hot-toast";
+import Fade from "react-reveal/Fade";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
+import "swiper/components/pagination/pagination.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.scss";
+import Testimonial from "../Testimonial/Testimonial";
+import "./Testimonials.css";
 
 const Testimonials = () => {
-    SwiperCore.use([Pagination, Autoplay]);
-    const [loading, setLoading] = useState(true);
-    const [Reviews, setReviews] = useState([]);
+  SwiperCore.use([Pagination, Autoplay]);
+  const [loading, setLoading] = useState(true);
+  const [Reviews, setReviews] = useState([]);
+  const callAPI = async () => {
+    const response = await axios.get("https://trav-geek-mern-server.vercel.app/reviews");
+    const data = response.data;
+    setReviews(data);
+    setLoading(false);
+    // toast.success('reviews');
+    console.log(data); // Do something with the data
+  };
+  function fetchData() {
+    try {
+        
+      callAPI();
+    } catch (error) {
+      toast.error(error.message+'reviews');
+      callAPI();
+    }
+  }
+  useEffect(() => {
+    // axios.get('https://trav-geek-mern-server.vercel.app/reviews')
+    //     .then(res => {
+    //         setReviews(res.data);
+    //         setLoading(false);
+    //     })
+    //     .catch(error => toast.error(error.message))
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-        axios.get('https://trav-geek-server.vercel.app/reviews')
-            .then(res => {
-                setReviews(res.data);
-                setLoading(false);
-            })
-            .catch(error => toast.error(error.message))
-    }, [])
-
-    return (
-        <section id="reviews" className="testimonials p-md-3">
-            <Fade bottom duration={2500} distance="40px">
-                <div className="my-5 py-4">
-                    <div className="review-title text-center">
-                        <span>What Our Clients Says</span>
-                        <h2>Testimonials</h2>
-                    </div>
-                    {loading ?
-                        <div className="text-center">
-                            <Spinner animation="border" variant="danger" />
-                        </div> :
-                        <CardDeck className="mt-5">
-                            <Swiper
-                                loop={true}
-                                pagination={{ clickable: true }}
-                                slidesPerView={1}
-                                breakpoints={{
-                                    640: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 2,
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 10,
-                                    },
-                                    1024: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 10,
-                                    },
-                                }}
-                                autoplay={{
-                                    delay: 2500,
-                                    disableOnInteraction: false,
-                                }}
-                                spaceBetween={10}
-                            >
-                                {
-                                    Reviews?.map(testimonial => {
-                                        return (
-                                            <SwiperSlide key={testimonial._id} className="mb-3">
-                                                <Testimonial testimonial={testimonial} />
-                                            </SwiperSlide>
-                                        )
-                                    })
-                                }
-                            </Swiper>
-                        </CardDeck>}
-                </div>
-            </Fade>
-        </section>
-    );
+  return (
+    <section id="reviews" className="testimonials p-md-3">
+      <Fade bottom duration={2500} distance="40px">
+        <div className="my-5 py-4">
+          <div className="review-title text-center">
+            <span>What Our Clients Says</span>
+            <h2>Testimonials</h2>
+          </div>
+          {loading ? (
+            <div className="text-center">
+              <Spinner animation="border" variant="danger" />
+            </div>
+          ) : (
+            <CardDeck className="mt-5">
+              <Swiper
+                loop={true}
+                pagination={{ clickable: true }}
+                slidesPerView={1}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 2,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
+                  },
+                }}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                spaceBetween={10}
+              >
+                {Reviews?.map((testimonial) => {
+                  return (
+                    <SwiperSlide key={testimonial._id} className="mb-3">
+                      <Testimonial testimonial={testimonial} />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </CardDeck>
+          )}
+        </div>
+      </Fade>
+    </section>
+  );
 };
 
 export default Testimonials;
