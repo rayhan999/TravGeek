@@ -16,7 +16,7 @@ const Services = () => {
                 setServices(res.data);
                 setLoading(false);
             })
-            .catch(error => toast.error(error.message))
+            .catch(error => toast.error('CORS Error'))
     }, [])
     const handleServices = () => {
         setShowMore(!showMore);

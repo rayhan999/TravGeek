@@ -21,7 +21,7 @@ const Testimonials = () => {
                 setReviews(res.data);
                 setLoading(false);
             })
-            .catch(error => toast.error(error.message))
+            .catch(error => toast.error('CORS Error'))
     }, [])
 
     return (
