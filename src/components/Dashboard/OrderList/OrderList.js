@@ -11,7 +11,7 @@ const OrderList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://trav-geek-server.vercel.app/orders?email=${email}`)
+        axios.get(`https://trav-geek-mern-server.vercel.app/orders?email=${email}`)
             .then(res => {
                 setOrders(res.data);
                 setLoading(false);
@@ -31,7 +31,7 @@ const OrderList = () => {
 
         const modifiedStatus = { id, status }
         console.log(modifiedOrders, modifiedStatus);
-        axios.patch('https://trav-geek-server.vercel.app/updateOrderStatus', modifiedStatus)
+        axios.patch('https://trav-geek-mern-server.vercel.app/updateOrderStatus', modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => toast.error(error.message));
     }
