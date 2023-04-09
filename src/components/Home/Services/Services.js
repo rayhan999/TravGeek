@@ -6,23 +6,28 @@ import ServiceFlipCard from "../ServiceFlipCard/ServiceFlipCard";
 import "./Services.css";
 
 const Services = () => {
-    const [loading, setLoading] = useState(true);
-    const [services, setServices] = useState([]);
-    const [showMore, setShowMore] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [services, setServices] = useState([]);
+  const [showMore, setShowMore] = useState(false);
+  const [error, setError] = useState(false);
 
-    useEffect(() => {
-        axios.get('https://trav-geek-server.vercel.app/services')
-            .then(res => {
-                setServices(res.data);
-                setLoading(false);
-            })
-            .catch(error => toast.error('CORS Error'))
-    }, [])
-    const handleServices = () => {
-        setShowMore(!showMore);
-    }
-  }
-  
+  useEffect(() => {
+    axios
+      .get("https://trav-geek-server.vercel.app/services")
+      .then((res) => {
+        setServices(res.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        toast.error("CORS Error");
+        setLoading(false);
+        setError(true);
+      });
+  }, []);
+  const handleServices = () => {
+    setShowMore(!showMore);
+  };
+
   return (
     <section id="services" className="text-center py-5">
       <h5>What We Do</h5>
@@ -30,15 +35,19 @@ const Services = () => {
       <Row className="justify-content-center mx-auto mt-md-5 pt-5">
         {loading ? (
           <Spinner animation="border" variant="danger" />
-        ) : showMore ? (
-          services.map((service) => <ServiceFlipCard key={service._id} service={service} />)
-        ) : (
+        ) : error ? (
+          <p>Can't load data due to CORS Issue</p>
+        ) : services && showMore ? (
+          services?.map((service) => <ServiceFlipCard key={service._id} service={service} />)
+        ) : services && !showMore ? (
           services.slice(0, 6).map((service) => <ServiceFlipCard key={service._id} service={service} />)
-        )}
+        ) : null}
       </Row>
-      <Button onClick={handleServices} className="px-4 logout-btn btn-main">
-        {showMore ? "Show Less" : "Show More"}
-      </Button>
+      {services ? (
+        <Button onClick={handleServices} className="px-4 logout-btn btn-main">
+          {showMore ? "Show Less" : "Show More"}
+        </Button>
+      ) : null}
     </section>
   );
 };

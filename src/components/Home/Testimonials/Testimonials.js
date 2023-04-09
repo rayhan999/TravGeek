@@ -37,7 +37,7 @@ const Testimonials = () => {
             <div className="text-center">
               <Spinner animation="border" variant="danger" />
             </div>
-          ) : (
+          ) : Reviews ? (
             <CardDeck className="mt-5">
               <Swiper
                 loop={true}
@@ -72,7 +72,7 @@ const Testimonials = () => {
                 })}
               </Swiper>
             </CardDeck>
-          )}
+          ) : null}
         </div>
       </Fade>
     </section>
