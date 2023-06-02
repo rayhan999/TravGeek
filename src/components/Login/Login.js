@@ -24,9 +24,6 @@ const Login = () => {
   const { from } = location.state || { from: { pathname: "/" } };
 
   useEffect(() => pathname === "/login" && setShowModal(true), [pathname]);
-  useEffect(() => {
-    alert("Click SUBMIT to login as admin. Otherwise signup with google to login as user.");
-  }, []);
 
   const googleSignIn = () => {
     initializeLoginFramework();

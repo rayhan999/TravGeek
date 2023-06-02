@@ -13,16 +13,12 @@ const Services = () => {
 
   useEffect(() => {
     axios
-      .get("https://trav-geek-server.vercel.app/services")
+      .get("https://trav-geek-mern-server.vercel.app/services")
       .then((res) => {
         setServices(res.data);
         setLoading(false);
       })
-      .catch((error) => {
-        toast.error("CORS Error");
-        setLoading(false);
-        setError(true);
-      });
+      .catch((error) => toast.error(error.message));
   }, []);
   const handleServices = () => {
     setShowMore(!showMore);
