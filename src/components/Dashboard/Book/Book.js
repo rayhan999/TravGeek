@@ -2,14 +2,15 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { Col, Container, Row, Toast } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import Select from 'react-select';
 import { UserContext } from '../../../App';
+import { API_ROOT } from '../../../consts/consts';
 import PaymentForm from '../Payment/PaymentForm';
 
 const Book = () => {
-    const { selectedService: { title, cost, days, location } } = useContext(UserContext);
+    const { selectedService: { title, cost } } = useContext(UserContext);
 
     const stripePromise = loadStripe('pk_test_51IhHpnJP2LH8iQtQsqLx4i9CYn3xOUnFyM9y2mRX3sxyTcPfQbeAyRg8rnqwbgn3J2wGVi3JB6EaZMAqqqaCm6b400b5UVe5NH');
     const [services, setServices] = useState([]);
@@ -21,7 +22,7 @@ const Book = () => {
     const serviceInfo = services.find(service => service.title === selectedOption.value);
 
     useEffect(() => {
-        axios.get('https://trav-geek-mern-server.vercel.app/services')
+        axios.get(`${API_ROOT}services`)
             .then(res => setServices(res.data))
             .catch(error => toast.error(error.message))
     }, [])

@@ -4,6 +4,7 @@ import { Button, Row, Spinner } from "react-bootstrap";
 import toast from "react-hot-toast";
 import ServiceFlipCard from "../ServiceFlipCard/ServiceFlipCard";
 import "./Services.css";
+import { API_ROOT } from "../../../consts/consts";
 
 const Services = () => {
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ const Services = () => {
 
   useEffect(() => {
     axios
-      .get("https://trav-geek-mern-server.vercel.app/services")
+      .get(`${API_ROOT}services`)
       .then((res) => {
         setServices(res.data);
         setLoading(false);

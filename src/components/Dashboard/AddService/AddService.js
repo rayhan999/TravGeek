@@ -7,9 +7,10 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 import './AddService.css';
+import { API_ROOT } from '../../../consts/consts';
 
 const AddService = ({ editService, restrictPermission, setEditService }) => {
-    // console.log(editService);
+    // // console.log(editService);
     const { register, handleSubmit } = useForm();
     const [img, setImg] = useState(null);
     const [imgPreview, setImgPreview] = useState(null);
@@ -23,7 +24,7 @@ const AddService = ({ editService, restrictPermission, setEditService }) => {
 
 
     const onSubmit = async data => {
-        console.log(img);
+        // console.log(img);
         if (!editService && !img) {
             return toast.error('Please upload an image!');
         }
@@ -66,7 +67,7 @@ const AddService = ({ editService, restrictPermission, setEditService }) => {
                 setEditService({});
                 return toast.error("You haven't changed anything!");
             }
-            axios.patch(`https://trav-geek-mern-server.vercel.app/update/${editService._id}`, serviceInfo)
+            axios.patch(`${API_ROOT}update/${editService._id}`, serviceInfo)
                 .then(res => {
                     toast.dismiss(loading);
                     if (res.data) {
@@ -84,7 +85,7 @@ const AddService = ({ editService, restrictPermission, setEditService }) => {
             return;
         }
 
-        axios.post('https://trav-geek-mern-server.vercel.app/addService', serviceInfo)
+        axios.post(`${API_ROOT}addService`, serviceInfo)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {
@@ -101,18 +102,18 @@ const AddService = ({ editService, restrictPermission, setEditService }) => {
         setErr(false);
         const selected = e.target.files[0];
         setImg(selected);
-        console.log(selected);
+        // console.log(selected);
         const mimetype = ['image/png', 'image/jpeg', 'image/jpg'];
         if (selected && mimetype.includes(selected.type)) {
-            console.log("selected");
+            // console.log("selected");
             let reader = new FileReader();
-            console.log("reader", reader);
+            // console.log("reader", reader);
             reader.onloadend = () => {
                 setImgPreview(reader.result);
             };
             reader.readAsDataURL(selected);
         } else {
-            console.log("Unsupported");
+            // console.log("Unsupported");
             setErr(true);
         }
     }

@@ -16,6 +16,7 @@ import AddReview from '../components/Dashboard/Review/AddReview';
 import Review, { EditReview } from '../components/Dashboard/Review/Review';
 import ReviewLoader from '../components/Dashboard/Review/ReviewLoader';
 import Sidebar from '../components/Dashboard/Sidebar/Sidebar';
+import { API_ROOT } from '../consts/consts';
 
 const Dashboard = ({ adminLoading }) => {
     const { loggedInUser: { email }, isAdmin } = useContext(UserContext);
@@ -37,7 +38,7 @@ const Dashboard = ({ adminLoading }) => {
     }
 
     useEffect(() => {
-        axios.get(`https://trav-geek-mern-server.vercel.app/reviews?email=${email}`)
+        axios.get(`${API_ROOT}reviews?email=${email}`)
             .then(res => {
                 setReview(res.data);
                 setLoadingReview(false);

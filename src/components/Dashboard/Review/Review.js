@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 import '../../Home/Testimonials/Testimonials.css';
 import AddReview from './AddReview';
+import { API_ROOT } from '../../../consts/consts';
 
 const Review = ({ review: { name, description, address, img, _id }, setEdit }) => {
     const handleDeleteReview = id => {
@@ -20,7 +21,7 @@ const Review = ({ review: { name, description, address, img, _id }, setEdit }) =
         }).then(wantDelete => {
             if (wantDelete) {
                 const loading = toast.loading('Deleting...Please wait!');
-                axios.delete(`https://trav-geek-mern-server.vercel.app/deleteReview/${id}`)
+                axios.delete(`${API_ROOT}deleteReview/${id}`)
                     .then(res => {
                         toast.dismiss(loading);
                         if (res.data) {

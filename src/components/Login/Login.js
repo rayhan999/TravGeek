@@ -47,7 +47,7 @@ const Login = () => {
     if (newUser && name && email && password) {
       createUserWithEmailAndPassword(name, email, password)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           res.name = name;
           toast.dismiss(loading);
           handleResponse(res);
@@ -84,7 +84,7 @@ const Login = () => {
     setNewUser(!newUser);
   };
   const handlePassShow = () => {
-    // console.log("asd");
+    // // console.log("asd");
     setSeePassword(!seePassword);
   };
   return (

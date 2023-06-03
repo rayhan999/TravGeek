@@ -16,10 +16,10 @@ export const handleGoogleSignIn = () => {
 }
 
 export const createUserWithEmailAndPassword = (name, email, password) => {
-    // console.log("a", name, email, password);
+    // // console.log("a", name, email, password);
     return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
-            // console.log(res);
+            // // console.log(res);
             updateUserName(name);
             return handleResponse(res);
         })
@@ -88,5 +88,5 @@ export const handleSignOut = () => {
             }
             return signedOutUser;
         })
-        .catch(error => console.log(error.message))
+        .catch(error =>  console.log(error.message))
 }

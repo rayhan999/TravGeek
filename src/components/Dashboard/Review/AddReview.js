@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 import ReactStars from "react-rating-stars-component";
 import { UserContext } from '../../../App';
+import { API_ROOT } from '../../../consts/consts';
 
 const AddReview = ({ review, setReview, edit, setEdit }) => {
     const { loggedInUser: { photo, name, email } } = useContext(UserContext);
@@ -13,7 +14,7 @@ const AddReview = ({ review, setReview, edit, setEdit }) => {
 
     const [rating, setRating] = useState(0);
     const ratingChanged = (newRating) => {
-        console.log(newRating);
+        // console.log(newRating);
         setRating(newRating);
     };
 
@@ -24,7 +25,7 @@ const AddReview = ({ review, setReview, edit, setEdit }) => {
         data.rating = rating;
 
         if (edit) {
-            axios.patch(`https://trav-geek-mern-server.vercel.app/updateReview/${review._id}`, data)
+            axios.patch(`${API_ROOT}updateReview/${review._id}`, data)
                 .then(res => {
                     toast.dismiss(loading);
                     if (
@@ -49,7 +50,7 @@ const AddReview = ({ review, setReview, edit, setEdit }) => {
             return;
         }
 
-        axios.post('https://trav-geek-mern-server.vercel.app/addReview', data)
+        axios.post(`${API_ROOT}addReview`, data)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {

@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 import { UserContext } from '../../../App';
+import { API_ROOT } from '../../../consts/consts';
 
 const useOptions = () => {
     const options = useMemo(() => ({
@@ -68,7 +69,7 @@ const PaymentForm = ({ serviceInfo }) => {
             orderTime: new Date().toLocaleString()
         };
 
-        axios.post('https://trav-geek-mern-server.vercel.app/addOrder', orderDetails)
+        axios.post(`${API_ROOT}addOrder`, orderDetails)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {

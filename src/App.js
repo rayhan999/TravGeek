@@ -6,6 +6,7 @@ import "./App.css";
 import LoadingSpinner from "./components/Home/LoadingSpinner/LoadingSpinner";
 import { getDecodedUser } from "./components/Login/LoginManager";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { API_ROOT } from "./consts/consts";
 const Home = lazy(() => import("./pages/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Login = lazy(() => import("./components/Login/Login"));
@@ -20,7 +21,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`https://trav-geek-mern-server.vercel.app/isAdmin?email=${loggedInUser?.email}`)
+      .get(`${API_ROOT}isAdmin?email=${loggedInUser?.email}`)
       .then((res) => {
         setIsAdmin(res.data);
         setAdminLoading(false);

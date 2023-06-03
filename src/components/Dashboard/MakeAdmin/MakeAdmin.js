@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 import { UserContext } from '../../../App';
 import './MakeAdmin.css';
+import { API_ROOT } from '../../../consts/consts';
 
 const MakeAdmin = () => {
     const { register, handleSubmit } = useForm();
@@ -15,7 +16,7 @@ const MakeAdmin = () => {
         //     return swal("Permission restriction!", "As a test-admin, you don't have this permission.", "info");;
         // }
         const loading = toast.loading('Adding...Please wait!');
-        axios.post('https://trav-geek-mern-server.vercel.app/addAdmin', data)
+        axios.post(`${API_ROOT}addAdmin`, data)
             .then(res => {
                 toast.dismiss(loading);
                 if (res.data) {

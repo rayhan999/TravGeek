@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import Testimonial from "../Testimonial/Testimonial";
 import "./Testimonials.css";
+import { API_ROOT } from "../../../consts/consts";
 
 const Testimonials = () => {
   SwiperCore.use([Pagination, Autoplay]);
@@ -17,7 +18,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     axios
-      .get("https://trav-geek-mern-server.vercel.app/reviews")
+      .get(`${API_ROOT}reviews`)
       .then((res) => {
         setReviews(res.data);
         setLoading(false);

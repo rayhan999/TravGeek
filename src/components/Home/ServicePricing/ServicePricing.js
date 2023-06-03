@@ -11,13 +11,14 @@ import turboEngine from '../../../images/turbo-engine.svg';
 import tyre from '../../../images/tyre.svg';
 import PricingItem from '../PricingItem/PricingItem';
 import './ServicePricing.css';
+import { API_ROOT } from '../../../consts/consts';
 
 const ServicePricing = () => {
     const [loading, setLoading] = useState(true);
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        axios.get('https://trav-geek-mern-server.vercel.app/services')
+        axios.get(`${API_ROOT}services`)
             .then(res => {
                 setServices(res.data);
                 setLoading(false);

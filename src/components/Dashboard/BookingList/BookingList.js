@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { UserContext } from '../../../App';
 import BookListLoader from '../BookListLoader/BookListLoader';
 import './BookingList.css';
+import { API_ROOT } from '../../../consts/consts';
 
 const BookingList = () => {
     const { loggedInUser: { email } } = useContext(UserContext);
@@ -12,7 +13,7 @@ const BookingList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://trav-geek-mern-server.vercel.app/orders?email=${email}`)
+        axios.get(`${API_ROOT}orders?email=${email}`)
             .then(res => {
                 setOrders(res.data);
                 setLoading(false);

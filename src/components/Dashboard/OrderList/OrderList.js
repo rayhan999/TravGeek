@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { UserContext } from '../../../App';
 import TableLoader from '../TableLoader/TableLoader';
+import { API_ROOT } from '../../../consts/consts';
 
 const OrderList = () => {
     const { loggedInUser: { email } } = useContext(UserContext);
@@ -11,7 +12,7 @@ const OrderList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://trav-geek-mern-server.vercel.app/orders?email=${email}`)
+        axios.get(`${API_ROOT}orders?email=${email}`)
             .then(res => {
                 setOrders(res.data);
                 setLoading(false);
@@ -30,8 +31,8 @@ const OrderList = () => {
         setOrders(modifiedOrders);
 
         const modifiedStatus = { id, status }
-        console.log(modifiedOrders, modifiedStatus);
-        axios.patch('https://trav-geek-mern-server.vercel.app/updateOrderStatus', modifiedStatus)
+        // console.log(modifiedOrders, modifiedStatus);
+        axios.patch(`${API_ROOT}updateOrderStatus`, modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => toast.error(error.message));
     }
