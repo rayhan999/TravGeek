@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import ServiceFlipCard from "../ServiceFlipCard/ServiceFlipCard";
 import "./Services.css";
 import { API_ROOT } from "../../../consts/consts";
+import makeAPICalls from "../../../utilities/makeApiCalls";
 
 const Services = () => {
   const [loading, setLoading] = useState(true);
@@ -13,13 +14,14 @@ const Services = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${API_ROOT}services`)
-      .then((res) => {
-        setServices(res.data);
-        setLoading(false);
-      })
-      .catch((error) => toast.error(error.message));
+    // axios
+    // .get(`${API_ROOT}services`)
+    // .then((res) => {
+    //   setServices(res.data);
+    //   setLoading(false);
+    // })
+    // .catch((error) => toast.error(error.message));
+    makeAPICalls(`services`, setServices, setLoading);
   }, []);
   const handleServices = () => {
     setShowMore(!showMore);

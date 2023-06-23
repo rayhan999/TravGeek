@@ -10,6 +10,7 @@ import "swiper/swiper.scss";
 import Testimonial from "../Testimonial/Testimonial";
 import "./Testimonials.css";
 import { API_ROOT } from "../../../consts/consts";
+import makeAPICalls from "../../../utilities/makeApiCalls";
 
 const Testimonials = () => {
   SwiperCore.use([Pagination, Autoplay]);
@@ -17,13 +18,14 @@ const Testimonials = () => {
   const [Reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${API_ROOT}reviews`)
-      .then((res) => {
-        setReviews(res.data);
-        setLoading(false);
-      })
-      .catch((error) => toast.error("CORS Error"));
+    // axios
+    // .get(`${API_ROOT}reviews`)
+    // .then((res) => {
+    //   setReviews(res.data);
+    //   setLoading(false);
+    // })
+    // .catch((error) => toast.error("CORS Error"));
+    makeAPICalls(`reviews`, setReviews, setLoading);
   }, []);
 
   return (

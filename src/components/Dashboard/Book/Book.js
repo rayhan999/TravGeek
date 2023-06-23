@@ -8,6 +8,7 @@ import Select from 'react-select';
 import { UserContext } from '../../../App';
 import { API_ROOT } from '../../../consts/consts';
 import PaymentForm from '../Payment/PaymentForm';
+import makeAPICalls from '../../../utilities/makeApiCalls';
 
 const Book = () => {
     const { selectedService: { title, cost } } = useContext(UserContext);
@@ -22,9 +23,11 @@ const Book = () => {
     const serviceInfo = services.find(service => service.title === selectedOption.value);
 
     useEffect(() => {
-        axios.get(`${API_ROOT}services`)
-            .then(res => setServices(res.data))
-            .catch(error => toast.error(error.message))
+        // axios.get(`${API_ROOT}services`)
+        //     .then(res => setServices(res.data))
+        //     .catch(error => toast.error(error.message))
+        
+    makeAPICalls(`services`, setServices);
     }, [])
 
     const colourStyles = {
