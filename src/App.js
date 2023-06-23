@@ -20,14 +20,44 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${API_ROOT}isAdmin?email=${loggedInUser?.email}`)
-      .then((res) => {
-        setIsAdmin(res.data);
-        setAdminLoading(false);
-      })
-      .catch((error) => toast.error("CORS Error"));
+    // axios
+    //   .get(`${API_ROOT}isAdmin?email=${loggedInUser?.email}`)
+    //   .then((res) => {
+    //     setIsAdmin(res.data);
+    //     setAdminLoading(false);
+    //   })
+    //   .catch((error) => toast.error("API ColdStart Error"));
+    makeAPICalls(loggedInUser?.email);
   }, [loggedInUser?.email]);
+
+  const makeAPICalls = async (email) => {
+    let success = false;
+    let attempts = 0;
+
+    while (!success && attempts < 10) {
+      try {
+        const response = await axios.get(`${API_ROOT}isAdmin?email=${email}`);
+        if (response.status === 200) {
+          success = true;
+          // console.log("API call successful");
+          setIsAdmin(response.data);
+          setAdminLoading(false);
+          // Process the data or update state
+        } else {
+          // console.log("API call failed");
+          attempts++;
+        }
+      } catch (error) {
+        // console.error("API call failed with error:", error);
+        attempts++;
+      }
+    }
+
+    if (!success) {
+      toast.error("API ColdStart Issue. Please Reload");
+      // Handle the case where the API call was not successful after multiple attempts
+    }
+  };
 
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser, isAdmin, selectedService, setSelectedService }}>
@@ -36,7 +66,7 @@ function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <Switch>
             <Route exact path="/">
-              <Home />
+              {adminLoading ? <LoadingSpinner /> : <Home />}
             </Route>
             <PrivateRoute path="/dashboard/:panel">
               <Dashboard adminLoading={adminLoading} />
