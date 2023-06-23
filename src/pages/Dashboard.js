@@ -43,7 +43,7 @@ const Dashboard = ({ adminLoading }) => {
     //     })
     //     .catch(error => toast.error(error.message))
     makeAPICalls(`reviews?email=${email}`, setReview, setLoadingReview);
-  }, [email, reviewEdit, review]);
+  }, [email, reviewEdit]);
 
   return (
     <main className="wrapper">
